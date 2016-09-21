@@ -1,0 +1,1 @@
+### Build apps by cd'ing into directory and running 'npm start' and going to 'http://localhost:8080/' ###
