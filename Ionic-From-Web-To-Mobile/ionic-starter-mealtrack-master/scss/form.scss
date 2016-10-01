@@ -1,0 +1,19 @@
+form {
+  &.ng-submitted {
+    label.has-error {
+      border-bottom: 2px solid $assertive;
+    }
+    .form-errors {
+      display: block;
+      .form-error {
+        padding: 10px 10px;
+        text-align: center;
+        color: $assertive;
+      }
+    }
+  }
+  .form-errors {
+    display: none;
+  }
+
+}

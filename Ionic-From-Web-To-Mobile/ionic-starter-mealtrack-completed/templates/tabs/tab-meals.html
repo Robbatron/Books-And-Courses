@@ -1,0 +1,41 @@
+<ion-view view-title="Meals" >
+	<ion-content >
+
+		<ion-refresher
+				pulling-text="Pull to refresh..."
+				on-refresh="refreshItems()" >
+		</ion-refresher >
+
+		<div class="list card item-card"
+		     ng-repeat="meal in meals.results" >
+
+			<div class="item" >
+				<h2 >{{meal.attributes.title}}</h2 >
+				<p>{{meal.attributes.created | mealtime}} - <span am-time-ago="meal.attributes.created"></span></p>
+			</div >
+
+			<div class="item item-image"
+			     ng-if="meal.attributes.picture" >
+				<img ng-src="{{meal.attributes.picture.url()}}" >
+			</div >
+
+			<div class="item " >
+				<span class="category" >#{{meal.attributes.category|lowercase}}</span >
+				<span class="calories" >{{meal.attributes.calories}}cal</span >
+			</div >
+
+		</div >
+
+
+		<ion-infinite-scroll
+				ng-if="meals.hasMore"
+				on-infinite="nextPage()"
+				immediate-check="false" >
+		</ion-infinite-scroll >
+
+		<div class="padding text-center"
+		     ng-if="!meals.hasMore" >
+			<p >No more results</p >
+		</div >
+	</ion-content >
+</ion-view >
