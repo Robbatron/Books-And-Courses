@@ -1,0 +1,41 @@
+$el :  button;
+$list : elementOne, ElementTwo, ElementThree;
+/////////////////////////////////////// Inheritated Selectors ////////////////////////////////////////////////////
+
+// #parent ##{$el} {
+//   background: green;
+//
+//   #child-One, .another, .evenmore {
+//     background-color: yellow;
+//     font-size: 1em;
+//   }
+//
+//   #child-Two {
+//     font-weight: 200;
+//     #inner-child .content {
+//       background-color: blue;
+//     }
+//   }
+//
+//   &.HasClass ##{$el}  {
+//     background: blue;
+//     font-weight: bold;
+//     font-style: blue;
+//   }
+// }
+
+/////////////////////////////////////// Inheritated Properties ///////////////////////////////////////////////////
+
+#parent %shared .child{
+      background:green;
+      font-size:2em;
+}
+
+.content {
+      @extend %shared;
+      line-height: 2em;
+ }
+
+ .sign, video, img, #{ $list } {
+       @extend %shared;
+}

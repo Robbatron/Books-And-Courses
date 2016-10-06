@@ -1,0 +1,31 @@
+$width: 600px;          $float: 1.5;            $int: 20;
+
+//Strings
+$string : '../images/hello.jpg';
+$stringTwo :  "../images/hello.jpg";
+$stringThree :  no-repeat;
+$stringSelector :  element;
+
+//Colors
+$colString : gray;
+$hex : #ccc;
+$rgb : rgb(230,230,230);
+$rgba : rgba(230,230,230,.2);
+
+// two lists inside of a list
+$list : 1px 1px 3px black,
+        3px 3px 4px #ccc;
+
+//For later lessons
+$map: ("key1":"value1","color":blue);
+$bool: true;
+$null: null;
+
+/////////////////////////////////////// Exported Code ///////////////////////////////////////////////////
+
+div .#{ $stringSelector } {
+      width: $width;
+      line-height: $int;
+      background: url($string) $stringThree $rgba ;
+      box-shadow: $list;
+}
