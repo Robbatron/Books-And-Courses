@@ -1,14 +1,13 @@
-var Greeter = (function () {
-    function Greeter(message) {
+class Greeter {
+    constructor(message) {
         this.greeting = message;
     }
-    Greeter.prototype.greet = function () {
+    greet() {
         return "Hello, " + this.greeting;
-    };
-    return Greeter;
-}());
-var greeter = new Greeter("world");
-var button = document.createElement('button');
+    }
+}
+let greeter = new Greeter("world");
+let button = document.createElement('button');
 button.textContent = "Say Hello";
 button.onclick = function () {
     alert(greeter.greet());

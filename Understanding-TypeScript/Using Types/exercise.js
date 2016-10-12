@@ -1,10 +1,10 @@
-var bankAccount = {
+let bankAccount = {
     money: 2000,
-    deposit: function (value) {
+    deposit(value) {
         this.money += value;
     }
 };
-var myself = {
+let myself = {
     name: "Robbie",
     bankAccount: bankAccount,
     hobbies: ["Sports", "Cooking"]
