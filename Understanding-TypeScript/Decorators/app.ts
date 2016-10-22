@@ -1,4 +1,4 @@
 // test push
 // test commit
-// yet another test ...
+// yet another test
 // another!
