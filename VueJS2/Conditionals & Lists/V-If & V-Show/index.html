@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Conditional Rendering</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="app">
+        <!-- v-if will actually detach elements from the DOM -->
+        <p v-if="show">You can see me!</p>
+        <!-- v-else will reference the latest v-if in front of it -->
+        <p v-else>Now you see me!</p>
+        <template v-if="show">
+            <h1>Heading</h1>
+            <p>Inside a template</p>
+        </template>
+        <!-- v-show does not detach the element, but rather adds a style of display: none to the element (per the condition) -->
+        <p v-show="show">Do you also see me?</p>
+        <button @click="show = !show">Switch</button>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

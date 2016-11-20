@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Conditional Rendering</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(ingredient, i) in ingredients" :key="ingredient">{{ ingredient }} ({{ i }})</li>
+            <!-- (element, index) is always the order the the arguments -->        
+        </ul>
+        <input v-model="inputText" placeholder="add to shopping list"></input>
+        <button @click="pushCustom">Add New</button>
+        <!-- looping through objects with v-for -->
+        <hr>
+        <ul>
+            <li v-for="person in persons">
+                <!-- key, value, and index will always be in this order (but you can name them differently) -->
+                <div v-for="(value, key, index) in person">{{ key }}: {{ value }} ({{ index }})</div>
+            </li>
+        </ul>
+        <!-- v-for also supports simple operations with supplied values -->
+        <span v-for="n in 10">{{ n }}</span>
+        <hr>
+        <!-- alternative syntax for nested elements -->
+        <template v-for="(ingredient, index) in ingredients">
+            <h1>{{ ingredient }}</h1>
+            <p>{{ index }}</p>
+        </template>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
