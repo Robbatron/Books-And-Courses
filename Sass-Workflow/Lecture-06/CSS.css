@@ -1,8 +1,0 @@
-#parent .content .child, #parent .sign .child, #parent video .child, #parent img .child, #parent elementOne .child, #parent ElementTwo .child, #parent ElementThree .child {
-  background: green;
-  font-size: 2em;
-}
-
-.content {
-  line-height: 2em;
-}
