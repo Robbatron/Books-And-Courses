@@ -1,35 +1,46 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <title>Arrow functions → → </title>
 </head>
+
 <body>
-<script>
-  const names = ['wes', 'kait', 'lux'];
+  <script>
+  // I want to add my last name to all of the names below...
+  const names = ['rob', 'mandy', 'finn'];
 
+  // ES5
   const fullNames = names.map(function(name) {
-    return `${name} bos`;
+    return `${name} delfs`;
   });
 
+  // Remove the 'function' keyword and put in the fat arrow after the params
   const fullNames2 = names.map((name) => {
-    return `${name} bos`;
+    return `${name} delfs`;
   });
 
+  // you can remove the parenthesis if there is only one parameter
   const fullNames3 = names.map(name => {
-    return `${name} bos`;
+    return `${name} delfs`;
   });
 
-  const fullNames4 = names.map(name => `${name} bos`);
+  // use an implicit return (remove the return keyword)
+  // JS will assume that we're returning if there are no curly brackets
+  const fullNames4 = names.map(name => `${name} delfs`);
 
-  const fullNames5 = names.map(() => `cool bos`);
+  // no arguments: you still need to pass a parenthesis if there are no params
+  const fullNames5 = names.map(() => `cool delfs`);
 
+  // arrow functions are ALWAYS anonymous functions
   const sayMyName = (name) => {
     alert(`Hello ${name}!`)
   }
 
-  sayMyName('Wes');
+  sayMyName('Rob');
 
 </script>
 </body>
+
 </html>

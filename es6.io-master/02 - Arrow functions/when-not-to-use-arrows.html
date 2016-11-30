@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>When _not_ to use arrows =></title>
 </head>
-<body>
-<style>
-  button { font-size: 100px; }
-  .on { background: #ffc600; }
-</style>
-<button id="pushy">Push Me</button>
 
-<script>
+<body>
+  <style>
+    button {
+      font-size: 100px;
+    }
+    
+    .on {
+      background: #ffc600;
+    }
+  </style>
+  <button id="pushy">Push Me</button>
+
+  <script>
   // When you really need `this`
   const button = document.querySelector('#pushy');
   button.addEventListener('click', function() {
@@ -55,4 +62,5 @@
 
 </script>
 </body>
+
 </html>

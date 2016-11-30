@@ -1,25 +1,39 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <title>let and const</title>
 </head>
+
 <body>
-<script>
+  <script>
+  // var: you can reassign and update them, they are function scoped
   function setWidth() {
     var width = 100;
     console.log(width);
   }
   setWidth();
+  console.log(width); // is this going to work? 
+  // no, because width is scoped to the setWidth function
+  // would work if we globally scoped it, but we're not going to do that
 
+  // how can function scoping "bite" us?
   var age = 100;
-  if(age > 12) {
-    const dogYears = age * 7;
+  if (age > 12) {
+    var dogYears = age * 7;
     console.log(`You are ${dogYears} dog years old!`);
   }
+  // in the above 'if' statement, age goes on the global object 
+  // because it is not inside of a function
+
+  // 'let' is block scoped! meaning that if we change dogYears to 'let',
+  // then the variable is trapped inside of the 'if' statement
 
   let height = 200;
+  // 'const' will work just the same - it is also block scoped
   const key = 'abc123';
 </script>
 </body>
+
 </html>

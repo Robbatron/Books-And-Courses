@@ -1,23 +1,49 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <title>let and const real world</title>
 </head>
+
 <body>
-<script>
+  <script>
+  // with ES6, IIFE's are no longer completely necessary if you are only using 'let' and 'const' instead we can just use brackets, since everything will be block scoped
+  
+  // new way
   {
-    const name = 'wes';
-    console.log(name);
+    const name = 'rob';
+    console.log("new way:", name);
   }
 
-  for(let i = 0; i < 10; i++) {
-    console.log(i);
+  // old way
+  (function() {
+    const name = 'rob';
+    console.log("old way:", name);
+  })();
+
+  // if we use 'var' in a for loop, the iterator variable leaks into the global scope
+  for (var i = 0; i < 10; i++) {
+    // console.log(i);
     setTimeout(function() {
       console.log('The number is ' + i);
-    },1000);
+    }, 1000);
   }
+  // with 'var', after 1 second, the entire loop has finished and 'i' is always 10 instead of 1-9
+
+  // one way to fix this is to simply use 'let' to block scope the iterator
+
+  // another way is to use an IIFE to run the function immediately with the current value of 'i'
+  for (var i = 0; i < 10; i++) {
+    (function(y) {setTimeout(function() {
+      console.log('the number is ' + y);
+    }, 1000)
+    })(i);
+  }
+
+  // i would rather use 'let'!
 
 </script>
 </body>
+
 </html>
