@@ -1,0 +1,17 @@
+body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	height: 100vh;
+}
+
+img {
+	margin-bottom: 3rem;
+}
+
+h1, p {
+	font-family: Helvectica, Arial, sans-serif;
+	font-weight: 300;
+	margin-bottom: 1.5rem;
+}

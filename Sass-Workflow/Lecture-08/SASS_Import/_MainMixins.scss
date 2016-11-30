@@ -1,0 +1,28 @@
+$SCSSVariable: SCSS;
+
+@mixin boxShadow( $shadow... ) {
+      -webkit-box-shadow: $shadow;
+      -moz-box-shadow: $shadow;
+      -o-box-shadow: $shadow;
+      box-shadow: $shadow;
+}
+
+@mixin transition( $transition... ) {
+      -webkit-transition: $transition;
+      -moz-transition: $transition;
+      -o-transition: $transition;
+      transition: $transition;
+}
+
+@mixin keyframes( $name ) {
+      @-webkit-keyframes #{ $name } {  @content;  }
+      @-moz-keyframes #{ $name } {  @content; }
+      @-o-keyframes #{ $name } { @content;  }
+      @keyframes #{ $name } {  @content;  }
+}
+
+div.content {
+  width: 2048px;
+  height: 1024px;
+  background: green;
+}

@@ -1,0 +1,92 @@
+<ion-view view-title="Track Meal" >
+
+	<ion-nav-buttons side="secondary" >
+			<button class="button button-icon ion-camera"
+			        ng-click="addPicture()" >
+			</button >
+	</ion-nav-buttons >
+
+	<ion-content >
+		<form name="createForm"
+		      novalidate=""
+		      ng-submit="trackMeal(createForm)"
+		      class="create-form" >
+			<ion-list >
+
+				<!-- Title -->
+				<label class="item item-input item-stacked-label"
+				       ng-class="{'has-error':createForm.title.$invalid}" >
+					<span class="input-label" >Description</span >
+					<input type="text"
+					       placeholder="Description"
+					       name="title"
+					       ng-model="formData.title"
+					       ng-required="true" >
+				</label >
+				<div class="form-errors"
+				     ng-messages="createForm.title.$error"
+				     ng-messages-include="templates/form-errors.html" >
+				</div >
+
+				<!-- Category -->
+				<label class="item item-input item-select"
+				       ng-class="{'has-error':createForm.category.$invalid}" >
+					<div class="input-label" >
+						Type
+					</div >
+					<select name="category"
+					        ng-model="formData.category"
+					        ng-required="true" >
+						<option selected
+						        value="" >Please Choose
+						</option >
+						<option value="snack" >Snack</option >
+						<option value="meal" >Meal</option >
+						<option value="drink" >Drink</option >
+					</select >
+				</label >
+				<div class="form-errors"
+				     ng-messages="createForm.category.$error"
+				     ng-messages-include="templates/form-errors.html" >
+				</div >
+
+				<!-- Price -->
+				<label class="item item-input item-stacked-label"
+				       ng-class="{'has-error':createForm.price.$invalid}" >
+					<span class="input-label" >Calories
+					</span >
+					<span class="calories" >{{formData.calories}}cal</span >
+
+					<div class="range range-royal" >
+						<input type="range"
+						       ng-model="formData.calories"
+						       name="calories"
+						       step="20"
+						       min="0"
+						       max="1000"
+						       value="150" >
+					</div >
+				</label >
+				<div class="form-errors"
+				     ng-messages="createForm.calories.$error"
+				     ng-messages-include="templates/form-errors.html" >
+				</div >
+			</ion-list >
+
+			<div class="padding" ng-show="formData.picture">
+				<div class="picture">
+					<img ng-src="data:image/jpeg;base64,{{formData.picture}}"
+					     alt="" />
+				</div >
+			</div>
+
+
+
+			<div class="padding" >
+				<button class="button button-positive button-block"
+				        type="submit" >Create
+				</button >
+			</div >
+		</form >
+	</ion-content >
+</ion-view >

@@ -1,0 +1,1 @@
+using commands 'tsc -w' and 'npm start' to compile and start lite-server
