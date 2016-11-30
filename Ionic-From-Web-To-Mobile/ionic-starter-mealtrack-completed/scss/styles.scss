@@ -1,0 +1,22 @@
+.create-form {
+  .calories {
+    float: right;
+    margin-right: $content-padding;
+  }
+  .picture {
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.item-card {
+  .calories {
+    float: right;
+    font-weight: bold;
+  }
+  .category {
+    color: lightgray;
+
+  }
+}

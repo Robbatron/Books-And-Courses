@@ -1,0 +1,21 @@
+.bar-header {
+  .title {
+    img {
+      height: 24px;
+      vertical-align:middle;
+      margin-right: 5px;
+      margin-top: -5px;
+    }
+  }
+}
+
+.scroll-content > map {
+  height: 100%;
+}
+
+.scroll-content > .scroll {
+  height: 100%;
+}
+.scroll-content > .scroll > map {
+  min-height: 100%;
+}

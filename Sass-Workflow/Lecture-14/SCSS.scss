@@ -1,0 +1,13 @@
+$headers :  h1   ,   h2   ,   h3  ,   h4   ,   h5   ,   h6;
+$fontSize : 55px , 45px , 40px , 35px , 30px;
+
+@function list-match( $list , $list2 ) {
+
+      $len   : length( $list );
+      $len2 : length( $list2 );
+
+      @if $len == $len2 { @return "Yup" }
+      @else { @return "Nope" }
+}
+
+html { width: list-match( $headers , $fontSize ); }

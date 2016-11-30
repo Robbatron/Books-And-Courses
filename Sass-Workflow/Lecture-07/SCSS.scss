@@ -1,0 +1,47 @@
+$color :  blue;
+
+@mixin cssProperties( $argOne, $argTwo ) {
+      #main{
+            color: $argOne;
+            background: green;
+            line-height: $argTwo;
+      }
+}
+
+@mixin boxShadow( $shadow... ) {
+      -webkit-box-shadow: $shadow;
+      -moz-box-shadow: $shadow;
+      -o-box-shadow: $shadow;
+      box-shadow: $shadow;
+}
+
+@mixin keyframes( $name ) {
+      @-webkit-keyframes #{ $name } {
+            @content;
+      }
+      @-moz-keyframes #{ $name } {
+            @content;
+      }
+      @-o-keyframes #{ $name } {
+            @content;
+      }
+      @keyframes #{ $name } {
+            @content;
+      }
+}
+
+//////////////////////////////////////////// Exported Code ///////////////////////////////////////////////////////
+
+/*body {
+
+      color:green;
+      width:200px;
+      @include boxShadow( 1px 2px 3px rgba(0,0,0,.3) , 4px 4px 2px gray );
+
+      @include cssProperties( $color, 2.6 );
+}*/
+
+@include keyframes( myAnim ) {
+      0% { opacity: 0 }
+      100% { opacity: 1 }
+};

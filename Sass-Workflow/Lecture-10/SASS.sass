@@ -1,0 +1,13 @@
+$map1: ("KeyName": "Value", "AnotherKey": 200px)
+
+$map2: ("key1": "value1", "key2": "value2", "key3": "value3")
+
+$map3: ("KeyName": "targeting a key produces it's value!", "String": string, "Number": 102, "List": (background 0.2s, color 0.3s), "NestedMap": ("NestedKey": "Nested value", "url": "../images/nestedImg.png", "Width": 300px))
+
+.foo
+  content: map-keys($map1)
+  content: map-values($map1)
+  content: map-has-key($map1, "KeyName")
+  content: map-get($map3, "KeyName")
+  content: inspect(map-merge($map1, $map2))
+  content: inspect(map-remove($map2, "key1", "key2"))
