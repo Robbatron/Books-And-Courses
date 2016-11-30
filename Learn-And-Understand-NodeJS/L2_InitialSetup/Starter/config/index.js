@@ -1,1 +1,0 @@
-var configValues = require('./config');
