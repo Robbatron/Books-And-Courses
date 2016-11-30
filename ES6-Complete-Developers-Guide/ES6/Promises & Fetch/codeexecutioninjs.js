@@ -1,1 +1,0 @@
-// ES6 now has a native implementation of promises

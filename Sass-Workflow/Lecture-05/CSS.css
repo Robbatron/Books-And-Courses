@@ -1,6 +1,0 @@
-div .element {
-  width: 600px;
-  line-height: 20;
-  background: url("../images/hello.jpg") no-repeat rgba(230, 230, 230, 0.2);
-  box-shadow: 1px 1px 3px black, 3px 3px 4px #ccc;
-}
