@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>let and const</title>
+</head>
+
+<body>
+  <script>
+  // with var, we can declare a variable twice and it will not warn us
+  // (unless we are writing in strict mode)
+
+  const key = 'abc123';
+  let points = 50;
+  let winner = false;
+
+  if (points > 40) {
+    console.log("it ran!");
+    let winner = true; // completely separate variable because of its scope
+  }
+
+  // so logging 'winner' here will give us 'false'
+  // logging inside of the 'if' statement will give us 'true'
+
+  // const variables cannot be changed
+  const person = {
+    name: 'robbie',
+    age: 24
+  }
+  
+  // some people think that const is mutable
+  // the properties of a const CAN change
+
+  // think of it like this: the person is me, I'm not going to change, 
+  // but things about me can change, such as my age
+  
+  // if you do need to freeze everything, there is a method for that
+  const rob = Object.freeze(person);
+
+</script>
+</body>
+
+</html>
