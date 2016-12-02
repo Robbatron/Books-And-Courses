@@ -12,12 +12,15 @@
 const race = '100m Dash';
 const winners = ['Hunter Gath', 'Singa Song', 'Imda Bos'];
 
+/* implicit return with object literal */
+// parenthesis show that we're trying to return an object literal
+// race is same as saying race: race
 const win = winners.map((winner, i) => ({name: winner, race, place: i + 1}));
+console.table(win);
 
 const ages = [23, 62, 45, 234, 2, 62, 234, 62, 34];
-
 const old = ages.filter(age => age >= 60);
-console.log(old);
+console.log(old); // only old people
 
 </script>
 </body>
