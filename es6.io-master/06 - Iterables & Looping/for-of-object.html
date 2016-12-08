@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Iterables & Looping</title>
 </head>
+
 <body>
 
-<script>
+  <script>
   const apple = {
     color: 'Red',
     size: 'Medium',
@@ -14,11 +16,19 @@
     sugar: 10
   };
 
+  // "until we have Object.entries() in ES7, let's stick to using 'for...in' for objects"
   for (const prop in apple) {
+    const value = apple[prop];
+    console.log(value, prop);
+  }
+
+  // to log out the same thing with 'for...of', we will need to use Object.keys
+  for (const prop of Object.keys(apple)) {
     const value = apple[prop];
     console.log(value, prop);
   }
 
 </script>
 </body>
+
 </html>
