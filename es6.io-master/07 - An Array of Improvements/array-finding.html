@@ -177,11 +177,21 @@
         "display_src":"https://scontent.cdninstagram.com/hphotos-xpt1/t51.2885-15/e35/11326072_550275398458202_1726754023_n.jpg"
      }
   ];
+
+
+  // if we want to find a whole object we can't really do this...
+  // posts.BAF_KYwcRY
+  // or...
+  // posts[BAF_KYwcRY]
+  // because we don't have any keys to grab things from an array
+
+  // .find()
   const code = 'VBgtGQcSf';
   const post = posts.find(post => post.code === code);
 
+  // find the object so that we can delete it with just the code
   const postIndex = posts.findIndex(post => post.code === code);
-  console.log(postIndex);
+  console.log("postIndex:", postIndex); // => 22
 
 </script>
 </body>

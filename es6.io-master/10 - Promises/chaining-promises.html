@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Chaining Promises</title>
 </head>
+
 <body>
-<script>
+  <script>
   const posts = [
     { title: 'I love JavaScript', author: 'Wes Bos', id: 1 },
     { title: 'CSS!', author: 'Chris Coyier', id: 2 },
@@ -18,50 +20,53 @@
     { name: 'Addy Osmani', twitter: '@addyosmani', bio: 'Googler' },
   ];
 
+  // create two seperate functions that are both going to return promises then chain them together
   function getPostById(id) {
-    // create a new promise
     return new Promise((resolve, reject) => {
-      // using a settimeout to mimick a databse
+      // using a setTimeout to mimick a database
       setTimeout(() => {
-        // find the post we want
-        const post = posts.find(post => post.id === id);
-        if(post) {
-          resolve(post); // send the post back
-        } else {
-          reject(Error('No Post Was Found!'));
-        }
-      }, 200);
-    });
+      // find the post we want
+      const post = posts.find(post => post.id === id)
+      if (post) {
+        // send the post back
+        resolve(post); 
+      } else {
+        // crash and burn
+        reject(Error('No Post Was Found!'))
+      }
+      }, 200)
+    })
   }
 
+  // replace the author with the author object
   function hydrateAuthor(post) {
     // create a new promise
     return new Promise((resolve, reject) => {
       // find the author
-      const authorDetails = authors.find(person => person.name === post.author);
-      if(authorDetails) {
+      const authorDetails = authors.find(person => person.name === post.author)
+      if (authorDetails) {
         // "hydrate" the post object with the author object
-        post.author = authorDetails;
-        resolve(post);
+        post.author = authorDetails // overwrite author with object
+        resolve(post)
       } else {
-        reject(Error('Can not find the author'));
+        reject(Error('Can not find the author'))
       }
-    });
+    })
   }
 
-  getPostById(3)
-    .then(post => {
-      return hydrateAuthor(post);
+  getPostById(2)
+    .then(post => { 
+      console.log(post) 
+      hydrateAuthor(post)
     })
-    .then(post => {
-      console.log(post);
+    .then(post => { // because hydrateAuthor returns a promise
+      console.log(post)
     })
     .catch(err => {
-      console.error(err);
-    });
-
-
+      console.log(err)
+    })
 
 </script>
 </body>
+
 </html>

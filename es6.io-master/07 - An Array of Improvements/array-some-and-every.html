@@ -9,14 +9,13 @@
   const ages = [32, 15, 19, 12];
 
   // 👵👨 is there at least one adult in the group?
-  const adultPresent = ages.some(age => age >= 18);
-  console.log(adultPresent);
+  const adult = ages.some(age => age > 18);
+  console.log(adult);
 
   // 🍻 is everyone old enough to drink?
-  const allOldEnough = ages.every(age => age >= 19);
-  console.log(allOldEnough);
-
-
+  const canDrink = ages.every(age => age > 21);  
+  console.log(canDrink);
+  
 </script>
 </body>
 </html>

@@ -20,6 +20,7 @@
     ingredients: ['Marinara', 'Italian Sausage', 'Dough', 'Cheese']
   };
 
+  // get all of the ingredients from deepDish
   const shoppingList = ['Milk', 'Flour', ...deepDish.ingredients];
   // console.log(shoppingList);
 
@@ -29,6 +30,8 @@
     { id: 632429, text: 'You are so dumb' },
     { id: 192834, text: 'Nice work on this wes!' },
   ];
+
+  // one of those comments isn't very nice, so we want to remove it, but all we're given is an id variable, how do you actually take it away?
   const id = 632429;
   const commentIndex = comments.findIndex(comment => comment.id === id);
 

@@ -6,19 +6,18 @@
 </head>
 <body>
 <script>
+  // create your own promise
+  // resolve: when the operation finished and passes the data back to you
+  // reject: if data was malformed, etc.
   const p = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      reject(Error('Err wes isn\'t cool'));
-    }, 1000);
+    // use a promise when you don't want to stop JS from running, you just want to start something and when it comes back you want to deal with the actual result
+    setTimeout(() => reject(Error('Robbie isn\'t cool')), 1000) 
+    // wrapping in an error object gives us more information of where the error happened and not just the line that the .catch() is on.
   });
 
   p
-    .then(data => {
-      console.log(data);
-    })
-    .catch(err => {
-      console.error(err);
-    });
+    .then(data => console.log(data))
+    .catch(err => console.log(err))
 
 </script>
 </body>

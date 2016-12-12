@@ -6,32 +6,36 @@
 </head>
 <body>
 <script>
-  // const weather = new Promise((resolve) => {
-  //   setTimeout(() => {
-  //     resolve({ temp: 29, conditions: 'Sunny with Clouds'});
-  //   }, 2000);
-  // });
+  const weather = new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({ temp: 29, conditions: 'Sunny with Clouds'});
+    }, 2000);
+  });
 
-  // const tweets = new Promise((resolve) => {
-  //   setTimeout(() => {
-  //     resolve(['I like cake', 'BBQ is good too!']);
-  //   }, 500);
-  // });
+  const tweets = new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(['I like cake', 'BBQ is good too!']);
+    }, 500);
+  });
 
-  // Promise
-  //   .all([weather, tweets])
-  //   .then(responses => {
-  //     const [weatherInfo, tweetInfo] = responses;
-  //     console.log(weatherInfo, tweetInfo)
-  //   });
+  Promise
+    .all([weather, tweets]) // .all() for multiple promises
+    .then(responses => { // we are going to get responses when both of those come back
+    // notice that it always takes 2 seconds to resolve our promise because it is waiting for all of the promise objects to come in (slowest one will decide how long they will take)
+      const [weatherInfo, tweetInfo] = responses;
+      console.log(weatherInfo, tweetInfo)
+    });
 
   const postsPromise = fetch('http://wesbos.com/wp-json/wp/v2/posts');
   const streetCarsPromise = fetch('http://data.ratp.fr/api/datasets/1.0/search/?q=paris');
-
+  // *** NOTICE THAT THIS WILL NOT WORK RIGHT AWAY, YOU NEED TO SET UP SOME KIND OF SERVER TO GET FETCH TO WORK (SINCE FETCH ONLY ALLOWS CORS WHICH YOU CAN NOT DO FROM YOUR LOCAL FILE SYSTEM)
   Promise
-    .all([postsPromise, streetCarsPromise])
+    .all([postsPromise, streetCarsPromise]) 
+    // need to listen to when both of the above are resolved (the two in our array of promises)
     .then(responses => {
-      return Promise.all(responses.map(res => res.json()))
+      return Promise.all(responses.map(res => res.json())) 
+      // taking the array of responses and calling .json on it which returns a second promise
+      // res.json() because there are many types of data that can come back and we only want json
     })
     .then(responses => {
       console.log(responses);

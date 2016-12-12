@@ -6,11 +6,13 @@
 </head>
 <body>
 <script>
-
+  // Spread takes every item from an iterable (arrays, strings, DOM nodes, arguments, objects) and apply it to the containing element or array
   const featured = ['Deep Dish', 'Pepperoni', 'Hawaiian'];
   const specialty = ['Meatzza', 'Spicy Mama', 'Margherita'];
 
+  // combine the pizzas, but put 'veg' in the middle
   const pizzas = [...featured, 'veg', ...specialty];
+  console.log(pizzas);
   const fridayPizzas = [...pizzas];
 
   const deepDish = {

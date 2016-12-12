@@ -11,23 +11,33 @@
   </div>
 <body>
 <script>
-  // const people = document.querySelectorAll('.people p');
-  // const peopleArray = Array.from(people, person => {
-  //   console.log(person);
-  //   return person.textContent;
-  // });
-  // console.log(peopleArray);
 
-  // // const names = people.map(person => person.textContent);
+  // .from() and .of() are both not on the prototype
+  const ages = [23,34,234]; 
+  // ... meaning that if we try ages.from() now, we will get an error
+
+  // .from() will take something that's array-ish and turn it into an array
+  // -  we often need this when we are working with DOM elements
+
+  const people = document.querySelectorAll('.people p');
+  // ^ Error: because it's a nodelist
+  // but now we can pass 'people' into Array.from()...
+  const peopleArray = Array.from(people, person => {
+    console.log(person);
+    return person.textContent;
+  });
+  console.log(peopleArray);
+  const names = people.map(person => person.textContent);
 
   function sumAll() {
-    const nums = Array.from(arguments);
-    return nums.reduce((prev, next) => prev + next, 0);
+    // arguments.from() is not possible, since arguments is array-ish
+    const nums = Array.from(arguments); // so we turn it into an array
+    return nums.reduce((prev, next) => prev + next, 0); // then reduce that
   }
 
   sumAll(2, 34, 23, 234, 234, 234234, 234234, 2342);
 
-  const ages = Array.of(12,4,23,62,34);
+  const ages = Array.of(12,4,23,62,34); // create an array from every argument that you pass it
   console.log(ages);
 
 </script>
