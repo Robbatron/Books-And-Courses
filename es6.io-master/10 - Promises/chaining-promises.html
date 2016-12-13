@@ -20,51 +20,79 @@
     { name: 'Addy Osmani', twitter: '@addyosmani', bio: 'Googler' },
   ];
 
-  // create two seperate functions that are both going to return promises then chain them together
+  // // create two seperate functions that are both going to return promises then chain them together
+  // function getPostById(id) {
+  //   return new Promise((resolve, reject) => {
+  //     // using a setTimeout to mimick a database
+  //     setTimeout(() => {
+  //     // find the post we want
+  //     const post = posts.find(post => post.id === id)
+  //     if (post) {
+  //       // send the post back
+  //       resolve(post); 
+  //     } else {
+  //       // crash and burn
+  //       reject(Error('No Post Was Found!'))
+  //     }
+  //     }, 200)
+  //   })
+  // }
+
+  // // replace the author with the author object
+  // function hydrateAuthor(post) {
+  //   // create a new promise
+  //   return new Promise((resolve, reject) => {
+  //     // find the author
+  //     const authorDetails = authors.find(person => person.name === post.author)
+  //     if (authorDetails) {
+  //       // "hydrate" the post object with the author object
+  //       post.author = authorDetails // overwrite author with object
+  //       resolve(post)
+  //     } else {
+  //       reject(Error('Can not find the author'))
+  //     }
+  //   })
+  // }
+
+  // getPostById(2)
+  //   .then(post => { 
+  //     console.log(post) 
+  //     hydrateAuthor(post)
+  //   })
+  //   .then(post => { // because hydrateAuthor returns a promise
+  //     console.log(post)
+  //   })
+  //   .catch(err => {
+  //     console.log(err)
+  //   })
+
+
   function getPostById(id) {
     return new Promise((resolve, reject) => {
-      // using a setTimeout to mimick a database
-      setTimeout(() => {
-      // find the post we want
       const post = posts.find(post => post.id === id)
-      if (post) {
-        // send the post back
-        resolve(post); 
-      } else {
-        // crash and burn
-        reject(Error('No Post Was Found!'))
-      }
-      }, 200)
+      post ? resolve(post) : reject(Error('No Post Was Found!'))
     })
   }
 
-  // replace the author with the author object
   function hydrateAuthor(post) {
-    // create a new promise
     return new Promise((resolve, reject) => {
-      // find the author
-      const authorDetails = authors.find(person => person.name === post.author)
+      const authorDetails = authors.find(person => person.name === post.author);
       if (authorDetails) {
-        // "hydrate" the post object with the author object
-        post.author = authorDetails // overwrite author with object
+        post.author = authorDetails;
         resolve(post)
-      } else {
-        reject(Error('Can not find the author'))
+      } else { 
+        reject(Error('No author'))
       }
     })
   }
 
   getPostById(2)
     .then(post => { 
-      console.log(post) 
-      hydrateAuthor(post)
+      console.log(post); 
+      return hydrateAuthor(post) 
     })
-    .then(post => { // because hydrateAuthor returns a promise
-      console.log(post)
-    })
-    .catch(err => {
-      console.log(err)
-    })
+    .then(post => console.log(post))
+    .catch(err => console.log(err))
 
 </script>
 </body>

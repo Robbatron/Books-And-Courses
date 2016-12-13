@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Chaining Promises</title>
 </head>
+
 <body>
-<script>
+  <script>
   const posts = [
     { title: 'I love JavaScript', author: 'Wes Bos', id: 1 },
     { title: 'CSS!', author: 'Chris Coyier', id: 2 },
@@ -20,10 +22,9 @@
 
   function getPostById(id) {
     return new Promise((resolve, reject) => {
-      // find the post
       setTimeout(() => {
         const post = posts.find(post => post.id === id);
-        if(post) {
+        if (post) {
           resolve(post);
         } else {
           reject(Error('Post not found!'));
@@ -36,7 +37,7 @@
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         const authorDetails = authors.find(person => person.name === post.author);
-        if(authorDetails) {
+        if (authorDetails) {
           post.author = authorDetails;
           resolve(post);
         } else {
@@ -59,4 +60,5 @@
 
 </script>
 </body>
+
 </html>

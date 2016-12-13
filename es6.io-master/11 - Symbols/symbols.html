@@ -6,21 +6,33 @@
 </head>
 <body>
 <script>
-  const wes = Symbol('Wes');
-  const person = Symbol('Wes');
+  // *** You should reach for a Symbol when you want the keys in your object to be absolutely unique ***
+
+  // a seventh primitive type has been added to JS: Symbol
+  // symbols are unique identifiers that help us avoid naming collisions
+  const wes = Symbol('Wes'); // the string is a descriptor
+  const person = Symbol('Wes'); 
+  // are these the same then?
+  console.log(wes === person) // false
+  console.log(wes == person) // false
+  // nope! not equal at all!
 
   const classRoom = {
     [Symbol('Mark')] : { grade: 50, gender: 'male' },
     [Symbol('olivia')]: { grade: 80, gender: 'female' },
     [Symbol('olivia')]: { grade: 80, gender: 'female' },
-  };
-
+  }; // having two olivias could cause issues. we could use a unique identifier but making Symbols is easier
+  
+  // *** Symbols are not enumerable *** - so this may be a good way to store private data
   for (const person in classRoom) {
     console.log(person);
   }
 
+  // if you want to enumerate, you can use 'getOwnPropertySymbols' to turn them into an array
   const syms = Object.getOwnPropertySymbols(classRoom);
+  // but if we look in the browser, we can only see entries like '1: Symbol(olivia)' so how do we get the data out of them?
   const data = syms.map(sym => classRoom[sym]);
+  // by using the symbol as the property key, you can extract the data
   console.log(data);
 
 </script>

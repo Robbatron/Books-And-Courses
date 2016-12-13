@@ -8,7 +8,7 @@
 
 <body>
   <script>
-)
+
 const postsPromise = fetch('http://wesbos.com/wp-json/wp/v2/posts');
 // *** NOTICE THAT THIS WILL NOT WORK RIGHT AWAY, YOU NEED TO SET UP SOME KIND OF SERVER TO GET FETCH TO WORK (SINCE FETCH ONLY ALLOWS CORS WHICH YOU CAN NOT DO FROM YOUR LOCAL FILE SYSTEM
 
@@ -21,7 +21,7 @@ const postsPromise = fetch('http://wesbos.com/wp-json/wp/v2/posts');
 postsPromise
   .then(data => data.json())
   .then(data => console.log(data))
-  .catch(err => console.log(err))
+  .catch(err => Error(err));
 
 </script>
 </body>
