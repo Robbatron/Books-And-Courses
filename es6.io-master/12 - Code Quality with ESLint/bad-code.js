@@ -1,3 +1,5 @@
+/* globals twttr ga */
+
 const weather = new Promise((resolve) => {
   setTimeout(() => {
     resolve({ temp: 29, conditions: 'Sunny with Clouds' });
