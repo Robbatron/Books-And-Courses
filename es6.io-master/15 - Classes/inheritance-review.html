@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Inheritance Review</title>
 </head>
+
 <body>
-<script>
+  <script>
   // when you put a method on the original constructor, it will be inhereted by the rest of them
+  // it is convention to uppercase the function constructor name
   function Dog(name, breed) {
     this.name = name;
     this.breed = breed;
   }
+
+  // add a method on the prototype of Dog
   Dog.prototype.bark = function() {
     console.log(`Bark Bark! My name is ${this.name}`)
   }
@@ -19,12 +24,15 @@
   const sunny = new Dog('Sunny', 'Golden Doodle');
 
   Dog.prototype.bark = function() {
-    console.log(`Bark Bark🇨🇦🇨🇦🇨🇦! My name is ${this.name} and I'm a ${this.breed}`);
+    console.log(`Bark Bark🇺🇸🇺🇸🇺🇸! My name is ${this.name} and I'm a ${this.breed}`);
   }
 
   Dog.prototype.cuddle = function() {
     console.log(`I love you owner!`);
   }
+
+  snickers.bark();
 </script>
 </body>
+
 </html>

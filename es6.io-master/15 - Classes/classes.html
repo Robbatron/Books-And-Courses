@@ -1,27 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Inheritance Review</title>
 </head>
+
 <body>
-<script>
-  function Dog(name, breed) {
+  <script>
+// class expression
+// const Dog = class {}
+
+// class declaration
+class Dog {
+  constructor(name, breed) {
     this.name = name;
     this.breed = breed;
   }
-
-  Dog.prototype.bark = function() {
+  bark() {
     console.log(`Bark Bark! My name is ${this.name}`);
-  };
-
-  Dog.prototype.cuddle = function() {
+  }
+  cuddle() {
     console.log(`I love you owner!`);
-  };
+  }
+  // because this is a static method, we can only call it on Dog directly
+  static info() {
+    console.log('A dog is better than a car by 10 times');
+  }
+  get description() {
+    return `${this.name} is a ${this.breed} type of dog`;
+  }
+  set nicknames(value) {
+    this.nick = value.trim();
+  }
+  get nicknames() {
+    return this.nick.toUpperCase();
+  }
+}
 
-  const snickers = new Dog('Snickers', 'King Charles');
-  const sunny = new Dog('Sunny', 'Golden Doodle');
+const snickers = new Dog('Snickers', 'King Charles');
+const sunny = new Dog('Sunny', 'Golden Doodle');
 
 </script>
 </body>
+
 </html>
