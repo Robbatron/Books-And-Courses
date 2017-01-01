@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React! React! React!</title>
+    <style>
+        #container {
+            padding: 50px;
+            background-color: #EEE;
+        }
+        #container h1 {
+            font-size: 48px;
+            font-family: sans-serif;
+            color: #0080A8;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script type="text/babel">
+        var destination = document.querySelector("#container")
+        ReactDOM.render(
+            <h1>Robbie Delfs</h1>,
+            destination
+        );
+    </script>       
+</body>
+</html>
