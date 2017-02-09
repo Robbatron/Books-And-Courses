@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const VideoListItem = ({video, onVideoSelect}) => {
   const imageUrl = video.snippet.thumbnails.default.url;
@@ -10,11 +10,13 @@ const VideoListItem = ({video, onVideoSelect}) => {
           <img className="media-object" src={imageUrl} />
         </div>
         <div className="media-body">
-          <div className="media-heading">{video.snippet.title}</div>
+          <div className="media-heading">
+            {video.snippet.title}
+          </div>
         </div>
       </div>
     </li>
   );
 };
 
-export default VideoListItem;
+export default VideoListItem
