@@ -27,6 +27,7 @@ class Dog {
   static info() {
     console.log('A dog is better than a car by 10 times');
   }
+  // with get, if an instance asks for description, this method will run
   get description() {
     return `${this.name} is a ${this.breed} type of dog`;
   }
