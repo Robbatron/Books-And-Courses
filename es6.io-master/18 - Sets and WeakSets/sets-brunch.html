@@ -8,18 +8,22 @@
 <script>
   const brunch = new Set();
   // as people start coming in
-  brunch.add('wes');
-  brunch.add('Sarah');
-  brunch.add('Simone');
+  brunch.add('Robbie');
+  brunch.add('Mandy');
+  brunch.add('Misty');
   // ready to open!
   const line = brunch.values();
-  console.log(line.next().value);
-  console.log(line.next().value);
+
+  // who's up!?
+  console.log(line.next().value); // Robbie
+  console.log(line.next().value); // Mandy
+  console.log(brunch); // weird...this is still the golden list of all the people
+  // that is because the 'Set' and the 'SetIterator' are different
   brunch.add('Heather');
   brunch.add('Snickers');
-  console.log(line.next().value);
-  console.log(line.next().value);
-  console.log(line.next().value);
+  console.log(line.next().value); // Misty ... the iterator picks up right where it left off
+  console.log(line.next().value); // Heather
+  console.log(line.next().value); // Snickers
 
 </script>
 </body>

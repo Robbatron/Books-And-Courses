@@ -6,19 +6,42 @@
 </head>
 <body>
 <script>
-  const people = new Set();
-  people.add('Wes');
-  people.add('Snickers');
-  people.add('Kait');
+  // Set: unique array (each item can only be added once) that has a nice API
 
-  for (const person of  people) {
+  // Kind of like an array but you can't access items individually and it's not index-based
+
+  // A list of items that we can add to, remove from, and loop over
+
+  const people = new Set();
+  people.add('Robbie');
+  people.add('Mandy');
+  people.add('Daedra');
+
+  people.size; // 3
+
+  // people.clear()
+
+  // people.values(); // if we log this we will see that we get back a SetIterator
+
+  // This means that we can loop over it with a generator!!!
+  const it = people.values();
+  // it.next(); // Object {value: "Robbie", done: false}
+  // it.next(); // Object {value: "Mandy", done: false}
+  // it.next(); // Object {value: "Daedra", done: false}
+  // it.next(); // Object {value: undefined, done: true}
+
+  // OR we can feed it into a 'for...of' loop!
+  for (const person of people) {
     console.log(person);
   }
 
+  // you can also create the set by immediately passing it an array
   const students = new Set(['Wes', 'Kara', 'Tony']);
 
+  // or separate the array
   const dogs = ['Snickers', 'Sunny'];
   const dogSet = new Set(dogs);
+  dogSet.has('Snickers'); // true
 
 </script>
 </body>

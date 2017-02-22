@@ -6,13 +6,25 @@
 </head>
 <body>
 <script>
+  // WeakSet: Can store objects :D but can not iterate over with a loop D:
   let dog1 = { name: 'Snickers', age: 3 };
   let dog2 = { name: 'sunny', age: 1 };
 
   const weakSauce = new WeakSet([dog1, dog2]);
 
+  // for (const dog of weakSauce) {
+  //   console.log(dog);
+  // }
+  // loops will throw the following error...
+  //    weakSauce[Symbol.iterator] is not a function
+
+  // One last note: WeakSet's don't have a 'clear()' method
+
+  // Why? Because they clean themselves (are GC'ed)
+  // So once the reference no longer exists, the object is automatically GC'ed
   console.log(weakSauce);
-  dog1 = null;
+  //weakSauce.clear() // NO!
+  dog1 = null; // YES!
   console.log(weakSauce);
 
 </script>

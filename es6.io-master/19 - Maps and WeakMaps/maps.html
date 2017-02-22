@@ -6,17 +6,30 @@
 </head>
 <body>
 <script>
+  // If 'Sets' are to Arrays, then 'Maps' are to objects
   const dogs = new Map();
 
+  // key and value instead of just values
   dogs.set('Snickers', 3);
   dogs.set('Sunny', 2);
   dogs.set('Hugo', 10);
 
-  dogs.forEach((val, key) => console.log(val, key));
+  // dogs.has('Snickers'); // true
+  // dogs.get('Snickers'); // 3
+  // dogs.delete('Hugo'); // true
 
+  dogs.forEach((val, key) => console.log(val, key));
+  // 3 "Snickers"
+  // 2 "Sunny"
+  // 10 "Hugo"
+
+  // destructure to get key and val out of dogs
   for (const [key, val] of dogs) {
     console.log(key, val);
   }
+  // Snickers 3
+  // Sunny 2
+  // Hugo 10
 
 </script>
 </body>
