@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import Person from "./Person/Person";
+import Radium from "radium";
 
 class App extends Component {
   state = {
@@ -36,9 +37,19 @@ class App extends Component {
     this.setState({ showPersons: !this.state.showPersons });
   };
 
-  togglePersonsView = () => {
+  render() {
+    const style = {
+      backgroundColor: "green",
+      color: "white",
+      font: "inherit",
+      border: "1px solid blue",
+      padding: "8px",
+      cursor: "pointer"
+    };
+
+    let persons = null;
     if (this.state.showPersons) {
-      return (
+      persons = (
         <div>
           {this.state.persons.map((person, index) => (
             <Person
@@ -53,28 +64,24 @@ class App extends Component {
           ))}
         </div>
       );
+      style.backgroundColor = "red";
     }
-  };
 
-  render() {
-    const style = {
-      backgroundColor: "white",
-      font: "inherit",
-      border: "1px solid blue",
-      padding: "8px",
-      cursor: "pointer"
-    };
+    const classes = [];
+    this.state.persons.length <= 2 && classes.push("red");
+    this.state.persons.length <= 1 && classes.push("bold");
 
     return (
       <div className="App">
-        <h1>Test</h1>
+        <h1>Hi, I'm a React App</h1>
+        <p className={classes.join(" ")}>This is really working!</p>
         <button style={style} onClick={this.togglePersonsHandler}>
           Switch Name
         </button>
-        {this.togglePersonsView()}
+        {persons}
       </div>
     );
   }
 }
 
-export default App;
+export default Radium(App);

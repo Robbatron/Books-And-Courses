@@ -1,0 +1,33 @@
+/* 
+
+  Q1: Which values can you use for align-items?
+  A1: stretch, flex-start, flex-end, center, baseline
+
+  Q2: What's the default value for align-items?
+  A2: stretch
+
+*/
+.container {
+  display: flex;
+
+  flex-direction: row-reverse;
+  justify-content: space-between;
+
+  /* we can use 'align-items' to deal with the cross-axis */
+
+  /* make elems align at top of container */
+   align-items: flex-start;
+
+  /* make elems align at bottom of container */
+  /* align-items: flex-end; */
+
+  /* make elems align at center of container */
+  /*align-items: center;*/
+
+  /* rare - if content of one or many is larger, it will align the content */
+  /* align-items: baseline; */
+
+  /* to demonstrate how much space the elements take in the container */
+  border: 1px solid #fff;
+  height: 100px;
+}

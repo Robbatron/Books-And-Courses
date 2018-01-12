@@ -1,0 +1,13 @@
+/* Your code goes here */
+.container {
+  display: flex;
+
+  /* default - no need to specify */
+  /* flex-direction: row; */
+
+  /* flip elements so that first is on the far right */
+  /* flex-direction: row-reverse; */ 
+
+  flex-direction: column;
+  /*flex-direction: column-reverse; */
+}

@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  
+  /* exact same values as justify-content: flex-s, flex-e, center, space-a, space-b */
+  align-content: flex-start;
+
+  /* to create a visible container */
+  border: 1px solid #fff;
+  height: 300px;
+  width: 300px;
+}

@@ -1,0 +1,24 @@
+/*
+
+  Q1: What is the default value for flex-wrap?
+  A1: nowrap
+
+*/
+.container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  /*flex-direction: row;*/
+
+  /* without 'flex-wrap', the elems were going outside of the border */
+  /*flex-wrap: wrap;*/
+
+  /* 'flex-direction' and 'flex-wrap' are closely related, so 'flex-flow' impls both */
+  /* flex-flow: <direction> <wrap> */
+  flex-flow: row wrap;
+
+  /* to create a visible container */
+  border: 1px solid #fff;
+  height: 200px;
+  width: 500px;
+}

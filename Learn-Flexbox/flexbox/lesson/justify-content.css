@@ -1,0 +1,24 @@
+/* 
+
+  Q1: What is justify-content used for?
+  A1: Aligning items along the main axis
+
+  Q2: What are the valid values for justify-content?
+  A2: flex-start, flex-end, space-around, space-between center
+
+*/
+.container {
+    display: flex;
+    
+    /* default - no need to specify */
+    /* justify-content: flex-start; */
+
+    /* align at right side of container */
+    /* justify-content: flex-end;*/
+    
+    /* each element has the same spacing to the left as to the right */
+    /* justify-content: space-around; */
+
+    /* removes spacing at the start and at the end */
+    justify-content: space-between;  
+}
