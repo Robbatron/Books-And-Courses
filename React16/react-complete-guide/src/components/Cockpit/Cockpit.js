@@ -3,24 +3,9 @@ import classes from "./Cockpit.css";
 import Persons from "../Persons/Persons";
 
 const Cockpit = props => {
-  const style = {
-    backgroundColor: "green",
-    textAlign: "center",
-    color: "white",
-    font: "inherit",
-    border: "1px solid blue",
-    padding: "8px",
-    cursor: "pointer",
-    ":hover": {
-      backgroundColor: "salmon",
-      color: "black"
-    }
-  };
-
+  let persons = null;
   let assignedClasses = [];
   let btnClass = "";
-
-  let persons = null;
 
   if (props.showPersons) {
     persons = (
@@ -30,10 +15,6 @@ const Cockpit = props => {
         changed={this.nameChangedHandler}
       />
     );
-    style[":hover"] = {
-      backgroundColor: "lightgreen",
-      color: "black"
-    };
   }
 
   if (props.showPersons) {
@@ -44,10 +25,12 @@ const Cockpit = props => {
   props.persons.length <= 1 && assignedClasses.push(classes.bold);
 
   return (
-    <div>
-      <h1>Test App</h1>
-      <p style={assignedClasses.join(" ")}>This is really working!</p>
-      <button onClick={props.clicked}>Toggle Persons</button>
+    <div className={classes.Cockpit}>
+      <h1>{props.appTitle}</h1>
+      <p className={assignedClasses.join(" ")}>This is really working!</p>
+      <button className={btnClass} onClick={props.clicked}>
+        Toggle Persons
+      </button>
     </div>
   );
 };
