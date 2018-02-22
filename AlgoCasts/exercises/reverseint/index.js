@@ -8,11 +8,11 @@
 //   reverseInt(-15) === -51
 //   reverseInt(-90) === -9
 
-function reverseInt(n) {
+function reverseInt(int) {
   return (
-    Math.sign(n) *
+    Math.sign(int) *
     parseInt(
-      n
+      int
         .toString()
         .split("")
         .reverse()

@@ -8,13 +8,19 @@
 //   palindrome("abcdefg") === false
 
 /* Javascripty way */
-const palindrome = str => str === [...str].reverse().join("");
+// const palindrome = str => str === [...str].reverse().join("");
 
 /* Every array helper */
 // function palindrome(str) {
 //   return str.split("").every((char, i) => {
 //     return char === str[str.length - i - 1];
 //   });
+// }
+
+// function palindrome(str) {
+//   let reversed = "";
+//   for (let s of str) reversed = s + reversed;
+//   return str === reversed;
 // }
 
 /* pop, lock, and drop it */
@@ -34,8 +40,8 @@ const palindrome = str => str === [...str].reverse().join("");
 /* For loop */
 // function palindrome(str) {
 //   let reversed = "";
-//   for (let i = 0; i < str.length; i++) {
-//     reversed = str[i] + reversed;
+//   for (let i = str.length - 1; i >= 0; i--) {
+//     reversed += str[i];
 //   }
 //   return str === reversed;
 // }

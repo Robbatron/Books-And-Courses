@@ -9,12 +9,13 @@
 // chunk([1, 2, 3, 4, 5], 10) --> [[ 1, 2, 3, 4, 5]]
 
 // with slice
-function chunk(array, size) {
-  const chunked = [];
-  let index = 0;
-  while (index < array.length) {
-    chunked.push(array.slice(index, index + size));
-    index += size;
+function chunk(arr, size) {
+  let chunked = [];
+  let i = 0;
+
+  while (i < arr.length) {
+    chunked.push(arr.slice(i, i + size));
+    i += size;
   }
   return chunked;
 }
