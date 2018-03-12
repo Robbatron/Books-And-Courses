@@ -3,6 +3,7 @@ import classes from "./Cockpit.css";
 import Persons from "../Persons/Persons";
 
 const Cockpit = props => {
+  //eslint-disable-next-line
   let persons = null;
   let assignedClasses = [];
   let btnClass = "";
