@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 // stateless functional component
 const Header = ({ tagline, cool }) => (
