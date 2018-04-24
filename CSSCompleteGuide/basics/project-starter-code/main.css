@@ -1,0 +1,31 @@
+h1 {
+  color: blue;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", sans-serif;
+}
+
+code {
+  font-family: "Courier New", Courier, monospace;
+  color: red;
+}
+
+.special {
+  color: green;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+li {
+  font-family: inherit;
+}
+
+li:not(:first-child) {
+  background-color: black;
+  color: white;
+}
+
+/* li + li {
+  background-color: black;
+  color: white;
+} */
