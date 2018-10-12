@@ -1,0 +1,7 @@
+endpoint: ${env:PRISMA_ENDPOINT}
+datamodel: datamodel.graphql
+# secret: ${env:PRISMA_SECRET}
+# post deploy hook that pulls down graphql schema
+hooks:
+  post-deploy:
+    - graphql get-schema -p prisma
