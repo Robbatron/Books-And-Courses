@@ -9,12 +9,15 @@ function postComments(state = [], action) {
         }
       ];
     case "REMOVE_COMMENT":
-      console.log("Removing a comment");
-      return state;
+      return [
+        // from the start to the one we want to delete
+        ...state.slice(0, action.index),
+        // after the deleted one, to the end
+        ...state.slice(action.index + 1)
+      ];
     default:
       return state;
   }
-  return state;
 }
 
 function comments(state = [], action) {

@@ -1,25 +1,26 @@
 import React, { Component } from "react";
 
-export default class Comments extends Component {
-  constructor(props) {
-    super(props);
-    this.props.removeComment = this.props.removeComment.bind(this);
-  }
+const Comments = React.createClass({
   renderComment(comment, i) {
     return (
       <div className="comment" key={i}>
         <p>
           <strong>{comment.user}</strong>
           {comment.text}
-          {console.log("this:", this)}
-          <button className="remove-comment" onClick={this.props.removeComment}>
+          <button
+            className="remove-comment"
+            onClick={this.props.removeComment.bind(
+              null,
+              this.props.params.postId,
+              i
+            )}
+          >
             &times;
           </button>
         </p>
       </div>
     );
-  }
-
+  },
   handleSubmit(e) {
     e.preventDefault();
     const { postId } = this.props.params;
@@ -27,8 +28,7 @@ export default class Comments extends Component {
     const comment = this.refs.comment.value;
     this.props.addComment(postId, author, comment);
     this.refs.commentForm.reset();
-  }
-
+  },
   render() {
     return (
       <div className="comments">
@@ -36,7 +36,7 @@ export default class Comments extends Component {
         <form
           ref="commentForm"
           className="comment-form"
-          onSubmit={this.handleSubmit.bind(this)}
+          onSubmit={this.handleSubmit}
         >
           <input type="text" ref="author" placeholder="author" />
           <input type="text" ref="comment" placeholder="comment" />
@@ -45,4 +45,6 @@ export default class Comments extends Component {
       </div>
     );
   }
-}
+});
+
+export default Comments;

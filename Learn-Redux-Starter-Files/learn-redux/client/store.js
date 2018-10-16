@@ -14,7 +14,21 @@ const defaultState = {
   comments
 };
 
-const store = createStore(rootReducer, defaultState);
+// for redux dev tools extension and other possible "enhancers"
+const enhancers = compose(
+  window.devToolsExtension ? window.devToolsExtension() : f => f
+  // f => f is just returning the store itself
+);
+
+const store = createStore(rootReducer, defaultState, enhancers);
 export const history = syncHistoryWithStore(browserHistory, store);
+
+// for HMR of reducers, not required
+if (module.hot) {
+  module.hot.accept("./reducers/", () => {
+    const nextRootReducer = require("./reducers/index").default;
+    store.replaceReducer(nextRootReducer);
+  });
+}
 
 export default store;
