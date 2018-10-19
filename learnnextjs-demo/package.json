@@ -2,10 +2,10 @@
   "name": "hello-next",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "next"
+    "dev": "next",
+    "build": "next build",
+    "start": "next start -p 8000"
   },
   "keywords": [],
   "author": "",
