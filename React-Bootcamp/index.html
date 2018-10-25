@@ -2,209 +2,141 @@
 <html>
 
 <head>
-  <title>First React App</title>
+  <title>Popular Repos</title>
   <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script src='https://unpkg.com/babel-standalone@6/babel.min.js'></script>
 </head>
 
 <body>
-  <div id="app"></div>
-
+  <div id='app'></div>
   <script>
-    window.API = {
-      fetchFriends() {
-        return new Promise((res, rej) => {
-          const friends = [
-            {
-              name: "Jordyn",
-              active: true,
-            },
-            {
-              name: "Mikenzi",
-              active: true,
-            },
-            {
-              name: "Jake",
-              active: false
-            }
-          ];
-          setTimeout(() => res(friends), 2000);
-        });
+    API = {
+      fetchPopularRepos(language = "all") {
+
+        const encodedURI = encodeURI(`https://api.github.com/search/repositories?q=stars:>1+language:${language}&sort=stars&order=desc&type=Repositories`)
+
+        return fetch(encodedURI)
+          .then(data => data.json())
+          .then(repos => repos.items)
+          .catch(error => {
+            console.warn(error)
+            return null
+          });
       }
     }
   </script>
-  <script type="text/babel">
+
+  <script type='text/babel'>
 
     class Loading extends React.Component {
 
       state = {
-        text: "Loading"
-      }
+        text: 'Loading'
+      };
 
       componentDidMount() {
-        const stopper = this.state.text + "...";
-        
+        const stopper = this.state.text + '...';
+
         this.interval = setInterval(() => {
           this.state.text === stopper
-          ? this.setState({ text: "Loading" })
-          : this.setState(currentState => {
-            return {
-              text: currentState.text + "."
-            }
-          })
-        }, 100);
+            ? this.setState(() => ({ text: 'Loading' }))
+            : this.setState(prevState => ({ text: prevState.text + '.' }))
+        }, 100)
       }
 
       componentWillUnmount() {
-        clearInterval(this.interval);
+        window.clearInterval(this.interval);
       }
 
       render() {
         return (
-          <p>{this.state.text}</p>
-        );
+          <p>
+            {this.state.text}
+          </p>
+        )
       }
     }
 
-    function ActiveFriends (props) {
-      return (
-        <div>
-          <h2>Active Friends</h2>
-          <ul>
-            {props.list.map(friend => {
-              return (
-                <li key={friend.name}>
-                  <span>{friend.name}</span>
-                  <button onClick={() => props.onRemoveFriend(friend.name)}>Remove</button>
-                  <button onClick={() => props.onToggleFriend(friend.name)}>Deactivate</button>
-                </li>
-              )
-            })}
-          </ul>
-        </div>
-      )
-    }
-
-    function InactiveFriends (props) {
-      return (
-        <div>
-          <h2>Inactive Friends</h2>
-          <ul>
-            {props.list.map(friend => (
-              <li key={friend.name}>
-                <span>{friend.name}</span>
-                <button onClick={() => props.onToggleFriend(friend.name)}>Activate</button>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )
-    }
-
     class App extends React.Component {
+
       state = {
-        friends: [],
-        input: "",
+        repos: [],
+        currentLang: 'all',
         loading: true
       }
 
       componentDidMount() {
-        console.log("-- componentDidMount --");
-        API.fetchFriends().then(friends => this.setState({ 
-          friends, 
-          loading: false 
-        }));
+        this.fetchReposGetMoney(this.state.currentLang);
       }
 
-      componentDidUpdate() {
-        console.log("-- componentDidUpdate --");
+      componentDidUpdate(prevProps, prevState) {
+        if (prevState.currentLang !== this.state.currentLang) {
+          this.fetchReposGetMoney(this.state.currentLang);
+        }
       }
 
-      componentWillUnmount() {
-        console.log("-- componentWillUnmount --");
-      }
-
-      handleAddFriend = e => {
-        e.preventDefault && e.preventDefault();
-        if (this.state.input) {
-          this.setState(currentState => {
-            return {
-              friends: currentState.friends.concat([{
-                name: this.state.input,
-                active: true
-              }]),
-              input: "",
-              binding: ""
-            }
+      fetchReposGetMoney = lang => {
+        this.setState({ loading: true })
+        API
+          .fetchPopularRepos(lang)
+          .then(data => {
+            this.setState({ 
+              repos: data, 
+              currentLang: lang, 
+              loading: false 
+            })
           });
-        }
       }
-
-      handleRemoveFriend = name => {
-        this.setState(currentState => ({
-          friends: currentState.friends.filter(friend => friend.name !== name)
-        }));
-      }
-
-      handleToggleFriend = name => {
-        this.setState(currentState => {
-          const friend = currentState.friends.find(friend => friend.name === name)
-          return {
-            friends: currentState.friends.filter(friend => friend.name !== name)
-              .concat([{
-                name,
-                active: !friend.active
-              }])
-          }
-        });
-      }
-
-      updateInput = e => {
-        this.setState({ input: e.target.value })
-      }
-
+      
       render() {
-
-        if (this.state.loading) {
-          return <Loading />
-        }
-
         return (
           <div>
-            {/* form allows submission on enter */}
-            <form>
-              <input
-                type="text"
-                placeholder="new friend"
-                value={this.state.input}
-                onChange={this.updateInput}
-              />
-              <button type="submit" onClick={this.handleAddFriend}>
-                Submit
-              </button>
-            </form>
-            <div>
-              <button onClick={() => this.setState({ friends: [] })}>
-                Clear All
-              </button>
-            </div>
-            <ActiveFriends
-              list={this.state.friends.filter(friend => friend.active === true)}
-              onRemoveFriend={this.handleRemoveFriend}
-              onToggleFriend={this.handleToggleFriend}
-            />
-            <InactiveFriends
-              list={this.state.friends.filter(friend => friend.active === false)}
-              onToggleFriend={this.handleToggleFriend}
-            />
+            <Nav fetchRepos={this.fetchReposGetMoney} />
+            <h1 style={{ textAlign: "center" }}>{this.state.currentLang}</h1>
+            {this.state.loading
+              ? <Loading />
+              : <RepoGrid repos={this.state.repos} />
+            }
           </div>
-        )
+        );
       }
     }
+
+    function RepoGrid(props) {
+      return (
+        <ul style={{ display: "flex", flexWrap: "wrap" }}>
+          {props.repos.map(({ name, html_url, owner, stargazers_count }) => (
+            <ul key={name} style={{ margin: 30 }}>
+              <li>
+                <a href={html_url} target="_blank">{name}</a>
+              </li>
+              <li>@{owner.login}</li>
+              <li>{stargazers_count}</li>
+            </ul>
+          ))}
+        </ul>
+      );
+    }
+
+    function Nav(props) {
+      const languages = ["all", "javascript", "ruby", "python"];
+      return (
+        <nav>
+          <ul style={{ cursor: "pointer" }}>
+            {languages.map(lang => (
+              <li key={lang} onClick={() => props.fetchRepos(lang)}>
+                {lang}
+              </li>
+            ))}
+          </ul>
+        </nav>
+      );
+    }
+
     ReactDOM.render(
       <App />,
-      document.getElementById("app")
+      document.getElementById('app')
     )
   </script>
 </body>
